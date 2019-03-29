@@ -17,6 +17,9 @@ Meetup topics, planning, &amp; presentations
 | Intro to SQL                        | TBD        | Aaron     |    |
 | Intro to Postgres 11                | TBD        | Aaron     | https://www.enterprisedb.com/downloads/postgres-postgresql-downloads    |
 | Intro to Django                     | TBD        |           |    |
-| API-Application programm.. inter..  | TBD        |           |    |
+| Responsive Web                      | TBD        |           |    |
+| API-Application programmming interface  | TBD        |           |    |
 | Intro to Travis FL                  | TBD        |           |    |
 | Intro to Web Security               | TBD        |           |    |
+| Testing                             | TBD        |           |    |
+| Continuous Integration/Continuous Delivery| TBD        |           |    |
