@@ -6,6 +6,7 @@ Meetup topics, planning, &amp; presentations
 | Topic                               | Date       | Presenter | Materials            |
 |-------------------------------------|------------|-----------|----------------------|
 | Git workflows and common tasks      | TBD        |           |    |
+| Python virtual environments         | TBD        | Matt      |    |
 | Python decorators                   | TBD        | Matt      |    |
 | Unicode and character encodings     | TBD        | Matt      |    |
 | Hosting a website on GitHub pages   | TBD        | Matt      |    |
