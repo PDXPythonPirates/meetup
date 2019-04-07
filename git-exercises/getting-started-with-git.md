@@ -21,6 +21,11 @@ Install [Homebrew][mac_homebrew].  After you have homebrew installed update to t
 
     $ brew install git
 
+## Linux
+
+I trust you already know how to install software on your linux system :)
+
+
 # Step 1: Git Configuration
 
 *This is where we'll jump in at the Meetup.*
