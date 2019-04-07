@@ -6,8 +6,8 @@
   1. Install a code editor.  
      If you have an editor you already use and like, keep using it.  
      Otherwise, these are couple of popular (and free) choices worth checking out:
-    - [VS Code][vscode]
-    - [Atom][atom]
+     - [VS Code][vscode]
+     - [Atom][atom]
   1. Sign up for an account on [GitHub](https://github.com).
 
 
