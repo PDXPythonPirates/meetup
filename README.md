@@ -2,6 +2,7 @@
 
 Meetup topics, planning, &amp; presentations
 
+## Proposed Topics
 
 | Topic                               | Date       | Presenter | Materials            |
 |-------------------------------------|------------|-----------|----------------------|
