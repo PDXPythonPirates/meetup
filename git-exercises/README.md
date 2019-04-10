@@ -141,7 +141,7 @@ If not, create them using `ssh-keygen`:
 
 Copy the *public* key (with `.pub` extension) to your clipboard:
 
-    $ pbcopy < ~/.ssh/id_rda.pub
+    $ pbcopy < ~/.ssh/id_rsa.pub
 
 Add this public key to GitHub: **Settings > SSH and GPG keys**
 
