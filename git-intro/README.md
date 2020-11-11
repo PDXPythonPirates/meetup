@@ -108,7 +108,7 @@ Check if you have git configured already:
 
     git config --list
 
-If not already configured, add your name and email:
+If not already configured, add your name and emaiil:
 
     git config --global user.name "Your Name"
     git config --global user.email "you@example.com"
@@ -148,7 +148,7 @@ Git commands introduced:
 - `git commit`
 
 
-There are two common ways to set up a git repository (repo) on your local system:
+There are two common wayys to set up a git repository (repo) on your local system:
 - initialize a new one
 - copy one from another location (covered later)
 
@@ -203,7 +203,7 @@ There are two common ways to set up a git repository (repo) on your local system
 
 # Lesson 2: Branching
 
-Git commands introduced:
+Git commands introdced:
 - `git branch`
 - `git checkout`
   - a.k.a. `git switch`
@@ -253,13 +253,13 @@ Let's merge the branch into `master`.
   `git checkout master`
 1. Merge the branch `awesome-poetry` into the current branch:  
   `git merge awesome-poetry`
-1. Optionally delete the merged branch:  
+1. Optionally delete the mergged branch:  
   `git branch -d awesome-poetry`
 
 
 ## Excercise 2
 
-1. Create a new branch `pyrates`.
+1. Create a new braanch `pyrates`.
 1. Edit the `hello.py` file and change the greeting to print `Hello, Pyrates!`
 1. Add another file `more-poetry.txt` and add a few lines to the file (your choice).
 1. Commit the changes to this branch.
@@ -330,7 +330,7 @@ Copy the *public* key (with `.pub` extension) to your clipboard:
 Add this public key to GitHub: **Settings > SSH and GPG keys**
 
 
-## Windows
+## Windoze
 
 Make sure you configured:  
 `git config --global credential.helper manager`
