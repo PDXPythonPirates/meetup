@@ -42,19 +42,19 @@ Our thanks goes out to them for the course materials they produce and the work t
 
 Install [Homebrew][mac_homebrew].  After you have homebrew installed update to the latest version of Git:
 
-    $ brew install git
+    brew install git
 
 Optional tools:
 
-    $ brew install tree
-    $ brew install starship
+    brew install tree
+    brew install starship
 
 ## Linux
 
 Ubuntu/Debian systems:
 
-    $ sudo apt update
-    $ sudo apt install -y git
+    sudo apt update
+    sudo apt install -y git
 
 See READMEs of tools like `startship` and `bash-git-prompt` for installation help.
 - [Starship][starship_prompt]
