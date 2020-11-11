@@ -13,6 +13,7 @@
 
 - [Main Git project site][git_scm]
 - [Git terms][sw_carpentry_git_terms]
+- [Git change lifecycle](./git-lifecycle.png)
 - [Git visual guide][git_visual_static]
 - [Git visual guide (interactive)][git_visual_dynamic]
 - [Git reference][sw_carpentry_git_ref]
