@@ -1,21 +1,24 @@
 # Getting Started with Git
 
-
-# Key Concepts Tonight
+## Key Concepts Tonight
 
 - Git repository
 - Commit
 - Commit hash
-- Symbolic names (branch names, tags, `HEAD`)
+- Symbolic names (branch names, `HEAD`, tags)
 - Working area / staging (index) / repository
 - Git != GitHub (or GitLab or BitBucket)
 
 # References
 
-- [Main Git site][git_scm]
-- [Pirates Git Resources](https://www.pythonpirates.org/resources/#git-and-github)
+- [Main Git project site][git_scm]
 - [Git terms][sw_carpentry_git_terms]
+- [Git visual guide][git_visual_static]
+- [Git visual guide (interactive)][git_visual_dynamic]
 - [Git reference][sw_carpentry_git_ref]
+- [Git editor configuration][git_editor]
+- [Pirates' Git Resources](https://www.pythonpirates.org/resources/#git-and-github)
+
 
 # Software Carpentry
 
@@ -25,7 +28,6 @@ Our thanks goes out to them for the course materials they produce and the work t
 
 - [Version Control with Git][git_exercises] exercises
 - [Talk Python #93][podcast] - SW Carpentry is the show topic
-
 
 # Preparation for Meetup
 
@@ -87,7 +89,7 @@ A few commands and directory shortcuts:
 
 ### Navigating the Command line:
 
-| Key combo     | Effect | 
+| Key combination | Effect | 
 |---------------|-------------------------|
 | UP-ARROW      | edit last command executed |
 | CTRL-a        | go to beginning of line |
@@ -98,47 +100,51 @@ A few commands and directory shortcuts:
 
 # Initial Configuration
 
+Check your version of git:
+
+    git --version
+
 Check if you have git configured already:
 
-    $ git config --list
+    git config --list
 
 If not already configured, add your name and email:
 
-    $ git config --global user.name "Your Name"
-    $ git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+    git config --global user.email "you@example.com"
 
 If you want to use **VS Code** as the editor for your commit messages:
 
-    $ git config --global user.editor "code -n -w"
+    git config --global user.editor "code -n -w"
 
 **Example configurations for other editors can be found [HERE][git_editor].**
 
 Adding a few aliases can reduce some typing:
 
-    $ git config --global alias.stat status
-    $ git config --global alias.s status
-    $ git config --global alias.co checkout
-    $ git config --global alias.lol  "log --oneline --graph --decorate"
+    git config --global alias.stat status
+    git config --global alias.co checkout
+    git config --global alias.lol  "log --oneline --graph --decorate"
 
 ## Windows
 
 Additional config for Windows users:
 
-    $ git config --global credential.helper manager
+    git config --global credential.helper manager
 
     # Confirm this is still recommended
-    $ git config --global core.autocrlf true
+    git config --global core.autocrlf true
 
     # Otherwise use standard hands-off policy ('input' for middle ground)
-    $ git config --global core.autocrlf false
+    git config --global core.autocrlf false
 
 
 # Lesson 1:  Making Commits
 
-Git commands we'll use:
+Git commands introduced:
 - `git status`
 - `git init`
 - `git add`
+- `git diff`
 - `git commit`
 
 
@@ -172,7 +178,12 @@ There are two common ways to set up a git repository (repo) on your local system
 1. Check the git history using either:  
   `git log`  
   `git log --oneline`
+1. Make more changes to `hello.py`
+1. Show the current changes using `git diff`:  
+  `git diff`
 
+> Note: The more meaningful your git commit messages the better.  Your future self and others will thank you.  
+> See [XKCD](https://xkcd.com/1296/) humor on commit messages.
 
 ## Excercise 1
 
@@ -192,25 +203,111 @@ There are two common ways to set up a git repository (repo) on your local system
 
 # Lesson 2: Branching
 
+Git commands introduced:
+- `git branch`
+- `git checkout`
+  - a.k.a. `git switch`
+- `git merge`
+
+Branching is where Git starts to shine!  Branches allow you to work on changes in a separate parallel history.  Branches are well suited for working on new application functionality, isolating bug fixes, and just good ole experimentation.
+
+Git provides the means to merge changes from one branch to another.  This is useful for:
+- Updating a banch with changes that were made on `master`/`main` since the branch was created
+- Merging the branch back to the primary `master`/`main` branches (or others)
+
+It's common to hear git discussions about "Merging a branch to master/main" -- often a feature branch with recent development.
+
+## Follow Along
+
+1. Check what are the current branches of this repo:  
+  `git branch`
+1. Create a new branch `awesome-poetry`:  
+  `git branch awesome-poetry`
+1. Notice the new branch is now in the branches list:  
+  `git branch`
+1. Switch to the new branch using `git checkout BRANCH_NAME`:  
+   `git checkout awesome-poetry`
+1. Create a new file named `poetry.txt` and add a few memorable lines:  
+    One fish  
+    Two fish  
+    Red fish  
+    Blue fish
+1. Add and commit the file:  
+  `git add .`  
+  `git commit -m "added some Seuss"`
+1. Check the git log:  
+  `git log --oneline --graph --decorate`
+1. Switch back to the branch `master`:  
+  `git checkout master`
+1. `poetry.txt` should be missing
+1. Switch back to the branch `awesome-poetry` using either:  
+  `git checkout awesome-poetry`  
+  `git checkout -`
+1. Verify `poetry.txt` is *back*
+
+You can switch among branches as much as you like.  The working directory will update to the most recent commit of the branch as long as you don't have any pending uncommitted changes.
+
+Let's merge the branch into `master`.
+
+1. Verify we are on the `master` branch:  
+  `git checkout master`
+1. Merge the branch `awesome-poetry` into the current branch:  
+  `git merge awesome-poetry`
+1. Optionally delete the merged branch:  
+  `git branch -d awesome-poetry`
+
+
+## Excercise 2
+
+1. Create a new branch `pyrates`.
+1. Edit the `hello.py` file and change the greeting to print `Hello, Pyrates!`
+1. Add another file `more-poetry.txt` and add a few lines to the file (your choice).
+1. Commit the changes to this branch.
+1. Merge the changes from the `pyrates` branch back to `master`.
+1. Verify your commits show in the git log.
+
 
 # Lesson 3: Ignoring Files
+
+Git feature and website introduced:
+- `.gitignore`
+- https://gitignore.io 
+
+Sometimes you have files you don't want to be tracked by Git.  Cache files, secret keys, and Python virtual environments are examples.
+
+Git provides a mechanism for ignoring files and directories based on a file matching pattern.   The patterns are stored in a file named `.gitignore`.  This file can be at the root of the repo in which case it applies to the entire repo, or placed in individual directories for more targetted effect.
+
+Let's set up a basic Python virtual environment to illustrate.
+
+## Follow Along
+
+1. Create a python virtual environment:  
+  `python3 -m venv venv`
+1. Notice all the files git now shows as untracked:  
+  `git status`
+1. Go to the website https://gitignore.io and enter paramenters for the ignore
+    - Python
+    - vscode
+    - PyCharm
+1. Copy the contents to `.gitignore`
+1. Notice the difference in what `git status` now reports.
+1. Add and commit the `.gitignore` file.
 
 
 # Lesson 4: GitHub Set Up
 
-Fork the [Wordplay repo][sample_repo] so you have a copy under your own account.
+Git commands introduced:
+- `git clone`
+- `git pull`
+  - `git fetch`
+  - `git merge`
+- `git push`
 
-Clone the repo to your local machine.
-- Windows: use the **HTTPS** URL
-- Mac/*nix: use the **SSH** URL
-
-    $ git clone <REPO_URL>
-
-## Mac and other *nix
+## Mac and Linux
 
 Check if you already have an SSH key pair:
 
-    $ ls -la ~/.ssh
+    ls -la ~/.ssh
 
     id_ed25519
     id_ed25519.pub
@@ -219,14 +316,16 @@ Check if you already have an SSH key pair:
 
 If not, create them using `ssh-keygen`:
 
-    $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "EMAIL_USED_WITH_GITHUB"
+    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "EMAIL_USED_WITH_GITHUB"
 
-Note: you may not want your email to be public.  The GitHub *setting* links to information about using a private email address [HERE][github_private_email].
+Note: Your email will be recorded with each commit available on GitHub.  You may not want your email to be public.  The GitHub *setting* links to information about using a private email address [HERE][github_private_email].
 
 Copy the *public* key (with `.pub` extension) to your clipboard:
 
-    # use id_rsa.pub instead if you already have it
-    $ pbcopy < ~/.ssh/id_ed25519.pub
+    # if you already have id_rsa.pub use that instead
+    pbcopy < ~/.ssh/id_ed25519.pub
+
+    # on linux use 'xsel -i' instead of 'pbcopy'
 
 Add this public key to GitHub: **Settings > SSH and GPG keys**
 
@@ -250,6 +349,44 @@ Execute a `git push` to a cloned repo.  When prompted, enter:
 - your new **Personal Access Token** for the password
 
 
+## Follow Along
+
+1. Fork [this repo][sample_repo] so you have a copy under your own account.
+
+2. Clone the repo to your local machine.
+    - Mac/Linux: use the **SSH** URL
+    - Windows: use the **HTTPS** URL
+
+    git clone REPO_URL
+
+3. Add another *remote* to the repo named `upstream`:
+
+    git add remote upstream https://github.com/PDXPythonPirates/meetup-workshops.git
+
+4. Make sure you have the latest `main`/`master`:  
+  Note: `git pull` is two commands in one: `git fetch` and `git merge`
+
+    git checkout main  
+    git pull upstream main  
+
+5. Check out a new branch to make changes:  
+
+    git checkout -b fix-typos
+
+6. Make edits and commit to your branch.
+7. Push the changes in your branch to **_your fork_**:  
+  Use `HEAD` as a shorthand for the current branch  
+
+    git push origin HEAD
+
+8. You can open a *Pull Request* from your **fork** in GitHub.
+
+
+# Additional Topics to Research
+
+- `git rebase`
+- `git bisect`
+- `git cherry-pick`
 
 # Misc.
 
@@ -272,6 +409,8 @@ fi
 
 
 [git_scm]: https://git-scm.com/
+[git_visual_static]: https://marklodato.github.io/visual-git-guide/index-en.html
+[git_visual_dynamic]: http://onlywei.github.io/explain-git-with-d3/
 [sw_carpentry]: https://software-carpentry.org/
 [git_exercises]: http://swcarpentry.github.io/git-novice/ 
 [sw_carpentry_git_ref]: http://swcarpentry.github.io/git-novice/reference 
@@ -281,7 +420,7 @@ fi
 [git_editor]: http://swcarpentry.github.io/git-novice/02-setup/index.html
 [git_windows]: https://gitforwindows.org/
 [mac_homebrew]: https://brew.sh/
-[sample_repo]: https://github.com/PDXPythonPirates/wordplay
+[sample_repo]: https://github.com/PDXPythonPirates/meetup-workshops
 [git_bash_contrib]: https://github.com/git/git/tree/master/contrib/completion
 [starship_prompt]: https://github.com/starship/starship
 [bash_git_prompt]: https://github.com/magicmonty/bash-git-prompt
