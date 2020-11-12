@@ -190,7 +190,7 @@ There are two common ways to set up a git repository (repo) on your local system
   `git log --oneline`
 
 
-## Excercise 1
+## Exercise 1
 
 1. If you haven't yet done so, create the `git-exercises` directory and initialize as a git repo.
 1. Create a file `python.txt` and write a line or two about how you currently use Python.
@@ -295,7 +295,7 @@ We can also review old versions of files using `git checkout`.
   - `HEAD` advances with commits just like branch names
 - Previous versions of files can be accessed using `git checkout`.
 
-## Excercise 2
+## Exercise 2
 
 1. Create a new branch `pyrates`.
 1. Edit the `hello.py` file and change the greeting to print `Hello, Pyrates!`
@@ -373,11 +373,10 @@ Add this public key to GitHub: **Settings > SSH and GPG keys**
 Make sure you configured:  
 `git config --global credential.helper manager`
 
-Create a Personal Access Token (PAT) using the GitHub website.  
+Create a Personal Access Token (PAT) on the GitHub website.  
 **Settings > Developer settings > Personal access tokens**
 
 > *KEEP THIS BROWSER TAB OPEN!*
-
 
 
 ## Follow Along - Part 1
