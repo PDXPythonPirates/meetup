@@ -13,10 +13,9 @@
 
 - [Main Git project site][git_scm]
 - [Git terms][sw_carpentry_git_terms]
-- [Git change lifecycle](./git-lifecycle.png)
+- [Git quick reference][sw_carpentry_git_ref]
 - [Git visual guide][git_visual_static]
 - [Git visual guide (interactive)][git_visual_dynamic]
-- [Git reference][sw_carpentry_git_ref]
 - [Git editor configuration][git_editor]
 - [Pirates' Git Resources](https://www.pythonpirates.org/resources/#git-and-github)
 
@@ -109,7 +108,7 @@ Check if you have git configured already:
 
     git config --list
 
-If not already configured, add your name and emaiil:
+If not already configured, add your name and email:
 
     git config --global user.name "Your Name"
     git config --global user.email "you@example.com"
@@ -141,6 +140,8 @@ Additional config for Windows users:
 
 # Lesson 1:  Making Commits
 
+![](git-lifecycle-med.png)
+
 Git commands introduced:
 - `git status`
 - `git init`
@@ -149,7 +150,7 @@ Git commands introduced:
 - `git commit`
 
 
-There are two common wayys to set up a git repository (repo) on your local system:
+There are two common ways to set up a git repository (repo) on your local system:
 - initialize a new one
 - copy one from another location (covered later)
 
@@ -173,18 +174,21 @@ There are two common wayys to set up a git repository (repo) on your local syste
 1. Add the recent change using a 2 step process:
     1. Notify git we want to track the changes of this new file:  
   `git add hello.py`
-    1. Commit the change using either: 
+    1. Commit the change using either:  
   `git commit`  
   `git commit -m "log message"`
-1. Check the git history using either:  
+1. Check the git history:  
   `git log`  
-  `git log --oneline`
 1. Make more changes to `hello.py`
 1. Show the current changes using `git diff`:  
   `git diff`
+1. Commit the latest change:  
+  `git add .`  
+  `git commit -m "another change"`
+1. Show the updated commit log:  
+  `git log`  
+  `git log --oneline`
 
-> Note: The more meaningful your git commit messages the better.  Your future self and others will thank you.  
-> See [XKCD](https://xkcd.com/1296/) humor on commit messages.
 
 ## Excercise 1
 
@@ -202,9 +206,13 @@ There are two common wayys to set up a git repository (repo) on your local syste
 1. Verify your commits in the git log.
 
 
+> Note: The more meaningful your git commit messages the better.  Your future self and others will thank you.  
+> See [XKCD](https://xkcd.com/1296/) humor on commit messages.
+
+
 # Lesson 2: Branching
 
-Git commands introdced:
+Git commands introduced:
 - `git branch`
 - `git checkout`
   - a.k.a. `git switch`
@@ -244,7 +252,7 @@ It's common to hear git discussions about "Merging a branch to master/main" -- o
 1. Switch back to the branch `awesome-poetry` using either:  
   `git checkout awesome-poetry`  
   `git checkout -`
-1. Verify `poetry.txt` is *back*
+1. Verify `poetry.txt` is back.
 
 You can switch among branches as much as you like.  The working directory will update to the most recent commit of the branch as long as you don't have any pending uncommitted changes.
 
@@ -254,13 +262,19 @@ Let's merge the branch into `master`.
   `git checkout master`
 1. Merge the branch `awesome-poetry` into the current branch:  
   `git merge awesome-poetry`
-1. Optionally delete the mergged branch:  
+1. Optionally delete the merged branch:  
   `git branch -d awesome-poetry`
 
+## Key Points
+
+- Branches are symbolic names that reference commit hashes
+- As commits are made on a branch, the reference is advanced to the most recent commmit
+- `HEAD` is a special symbolic name that references the current active branch _or_ commit hash (a.k.a. "detached HEAD")
+- Use `git checkout BRANCH_NAME` to switch the current active branch
 
 ## Excercise 2
 
-1. Create a new braanch `pyrates`.
+1. Create a new branch `pyrates`.
 1. Edit the `hello.py` file and change the greeting to print `Hello, Pyrates!`
 1. Add another file `more-poetry.txt` and add a few lines to the file (your choice).
 1. Commit the changes to this branch.
@@ -284,7 +298,7 @@ Let's set up a basic Python virtual environment to illustrate.
 
 1. Create a python virtual environment:  
   `python3 -m venv venv`
-1. Notice all the files git now shows as untracked:  
+1. Notice git lists `venv` as an untracked directory:  
   `git status`
 1. Go to the website https://gitignore.io and enter paramenters for the ignore
     - Python
@@ -331,7 +345,7 @@ Copy the *public* key (with `.pub` extension) to your clipboard:
 Add this public key to GitHub: **Settings > SSH and GPG keys**
 
 
-## Windoze
+## Windows
 
 Make sure you configured:  
 `git config --global credential.helper manager`
@@ -386,8 +400,8 @@ Execute a `git push` to a cloned repo.  When prompted, enter:
 # Additional Topics to Research
 
 - `git rebase`
+- `git reflog`
 - `git bisect`
-- `git cherry-pick`
 
 # Misc.
 
