@@ -378,12 +378,6 @@ Create a Personal Access Token (PAT) using the GitHub website.
 
 > *KEEP THIS BROWSER TAB OPEN!*
 
-Clone a repo you have under your user account in GitHub.
-You can either create a new one or **fork** an existing one.  
-
-Execute a `git push` to a cloned repo.  When prompted, enter:
-- your github username
-- your new **Personal Access Token** for the password
 
 
 ## Follow Along - Part 1
@@ -401,6 +395,16 @@ Execute a `git push` to a cloned repo.  When prompted, enter:
 
     git clone REPO_URL
 
+1. Inspect the "remote" information configured for this repo:  
+  `git remote --verbose`
+1. Inspect the extra branch information available:  
+  `git branch --all`
+1. Make some edits to the repo and commit your changes.
+1. Push your changes back to GitHub:  
+  `git push origin HEAD`
+1. (Windows) When prompted for credentials enter:
+    - Your github username
+    - Your new **Personal Access Token** for the password
 
 ## Follow Along - Part 2
 
