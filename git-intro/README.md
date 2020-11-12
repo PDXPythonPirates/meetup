@@ -265,12 +265,35 @@ Let's merge the branch into `master`.
 1. Optionally delete the merged branch:  
   `git branch -d awesome-poetry`
 
+We can also review old versions of files using `git checkout`.
+
+1. Make another edit to `poetry.txt`, adding and removing a few lines.
+1. Commit the changes.
+1. Find a previous git hash as the snapshotted version:  
+  `git log --oneline`
+1. Roll back to that snapshot:  
+  `git checkout HASH poetry.txt`
+1. Verify the contents of the file is the older version:  
+  `cat poetry.txt`
+1. Notice the effect on git status:  
+  `git status`
+1. See the effect of `restore`:  
+  `git restore .`  
+  `git status`
+1. Revert changes to last commit:  
+  `git reset --hard HEAD`
+
+> **CAUTION:** `git reset --hard` is a powerful but potentially destructive action.
+
 ## Key Points
 
-- Branches are symbolic names that reference commit hashes
-- As commits are made on a branch, the reference is advanced to the most recent commmit
-- `HEAD` is a special symbolic name that references the current active branch _or_ commit hash (a.k.a. "detached HEAD")
-- Use `git checkout BRANCH_NAME` to switch the current active branch
+- Branches are symbolic names that reference commit hashes.
+- As commits are made on a branch, the reference is advanced to the most recent commmit.
+- Use `git checkout BRANCH_NAME` to switch the current active branch.
+- `HEAD` is a special symbolic name that references the current active branch _or_ commit hash (a.k.a. "detached HEAD" which means not on a branch).
+  - `HEAD` changes as you switch branches
+  - `HEAD` advances with commits just like branch names
+- Previous versions of files can be accessed using `git checkout`.
 
 ## Excercise 2
 
@@ -357,14 +380,29 @@ Create a Personal Access Token (PAT) using the GitHub website.
 
 Clone a repo you have under your user account in GitHub.
 You can either create a new one or **fork** an existing one.  
-> We will demonstrate how to create a **fork**.
 
 Execute a `git push` to a cloned repo.  When prompted, enter:
 - your github username
 - your new **Personal Access Token** for the password
 
 
-## Follow Along
+## Follow Along - Part 1
+
+1. Log into GitHub in your browser
+1. In the top right corner you'll find a `+` with a menu
+1. Select `New repository`
+1. Give the repository a name and description
+1. Select options for README, .gitignore, and License
+1. Click `Create repository`
+1. On the new screen, click the *green button* `Code`
+    - Mac/Linux: use the **SSH** URL
+    - Windows: use the **HTTPS** URL
+1. Clone the repo to your local machine:
+
+    git clone REPO_URL
+
+
+## Follow Along - Part 2
 
 1. Fork [this repo][sample_repo] so you have a copy under your own account.
 
