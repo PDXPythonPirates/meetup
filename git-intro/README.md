@@ -89,13 +89,14 @@ A few commands and directory shortcuts:
 
 ### Navigating the Command line:
 
-| Key combination | Effect | 
-|---------------|-------------------------|
-| UP-ARROW      | edit last command executed |
-| CTRL-a        | go to beginning of line |
-| CTRL-e        | go to end of line |
-| CTRL-w        | delete word *preceding* cursor
-| CTRL-u        | delete from cursor to beginning of line |
+| Key combination | Effect                                  |
+| --------------- | --------------------------------------- |
+| UP-ARROW        | edit last command executed              |
+| CTRL-a          | go to beginning of line                 |
+| CTRL-e          | go to end of line                       |
+| CTRL-w          | delete word *preceding* cursor          |
+| CTRL-u          | delete from cursor to beginning of line |
+| CTRL-l          | clear the screen                        |
 
 
 # Initial Configuration
@@ -140,7 +141,7 @@ Additional config for Windows users:
 
 # Lesson 1:  Making Commits
 
-![](git-lifecycle-med.png)
+![Git lifecycle diagram](git-lifecycle.png)
 
 Git commands introduced:
 - `git status`
@@ -212,13 +213,16 @@ There are two common ways to set up a git repository (repo) on your local system
 
 # Lesson 2: Branching
 
+![Git branch diagram](git-branching.png)
+
 Git commands introduced:
 - `git branch`
 - `git checkout`
   - a.k.a. `git switch`
 - `git merge`
+- `git reset`
 
-Branching is where Git starts to shine!  Branches allow you to work on changes in a separate parallel history.  Branches are well suited for working on new application functionality, isolating bug fixes, and just good ole experimentation.
+Branching is where Git starts to shine.  Branches allow you to work on changes in a separate parallel history.  Branches are well suited for working on new application functionality, isolating bug fixes, and general experimentation.
 
 Git provides the means to merge changes from one branch to another.  This is useful for:
 - Updating a banch with changes that were made on `master`/`main` since the branch was created
@@ -245,7 +249,8 @@ It's common to hear git discussions about "Merging a branch to master/main" -- o
   `git add .`  
   `git commit -m "added some Seuss"`
 1. Check the git log:  
-  `git log --oneline --graph --decorate`
+  `git log --oneline --graph --decorate`   
+  You can use `git lol` if you added that alias.
 1. Switch back to the branch `master`:  
   `git checkout master`
 1. `poetry.txt` should be missing
